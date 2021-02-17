@@ -1,0 +1,90 @@
+button2:
+  use: "@atoms/button2/button2.twig"
+  label: Button 2 polaris
+  description: Regular or outline buttons with different colors.
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: More
+    url:
+      type: url
+      label: Url
+      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
+  variants:
+    default:
+      label: Default
+      configuration:
+        colors:
+          primary: 'btn-primary'
+          secondary: 'btn-secondary'
+    outline:
+      label: Outline
+      configuration:
+        colors:
+          primary: 'btn-outline-primary'
+          secondary: 'btn-outline-secondary'
+      description: Inverts colors
+  configuration:
+    size:
+      text:
+        small: btn-sm
+        medium: btn-md
+        large: btn-lg
+      icon:
+        small: w-4 h-4
+        medium: w-5 h-5
+        large: w-6 h-6
+  settings:
+    size:
+      type: select
+      required: true
+      label: Size
+      preview: medium
+      options:
+        small: Small
+        medium: Medium
+        large: Large
+
+    destructive:
+      type: boolean
+      label: Destructive
+    disabled:
+      type: boolean
+      label: Disabled
+    external:
+      type: boolean
+      label: External
+    fullWidth:
+      type: boolean
+      label: Full width
+    id:
+      type: text
+      label: ID
+    expanded:
+      type: boolean
+      label: Expanded
+    color:
+      type: select
+      required: true
+      label: Color
+      preview: primary
+      description: Choose your color
+      options:
+        primary: Primary
+        secondary: Secondary
+    icon:
+      type: select
+      label: Icon
+      description: Go with an icon alongside your text.
+      options:
+        search: Search
+        right-arrow: Right-arrow
+    icon_alignment:
+      type: select
+      label: Icon alignment
+      description: Left or right your text.
+      default_value: right
+      options:
+        left: Left
+        right: Right

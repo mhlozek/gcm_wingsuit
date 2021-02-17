@@ -1,0 +1,25 @@
+import { Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { PatternLoad, PatternPreview } from '@wingsuit-designsystem/storybook';
+import { PatternProperties } from '@wingsuit-designsystem/storybook';
+
+<PatternLoad patternId="button2">
+  {(pattern) => (
+  <>
+    <Title />
+    <Subtitle />
+
+## Simple usage
+
+```twig dark
+  {% include "button.twig" with {
+    attributes: create_attribute(),
+    class: class
+  } only %}
+`} />
+```
+
+<PatternProperties variant={pattern.getDefaultVariant()} />
+
+  </>
+  )}
+</PatternLoad>

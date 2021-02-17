@@ -1,0 +1,53 @@
+{#
+  Defaults
+#}
+{% set tag_name = tag_name|default('button') %}
+{% set color = color|default('primary') %}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set icon_size = icon_size|default('default') %}
+{% set icon_alignment = icon_alignment|default('right') %}
+
+{#
+  Classes
+#}
+
+{% set classes = [
+  'btn',
+  fullWidth ? 'd-block',
+  destructive ? 'btn-destructive',
+  variant == 'outline' ? 'btn-outline-primary',
+  icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
+  pattern_configuration('button', variant, 'colors')[color],
+  pattern_configuration('button', variant, 'size')['text'][size],
+] %}
+
+{% set icon_size = ([
+  icon_alignment == 'left' ? 'mr-2' : 'ml-2',
+  pattern_configuration('button', variant, 'size')['icon'][size],
+]) | sort | join(' ') | trim %}
+
+{% if url is not empty %}
+  {% set attributes = attributes.setAttribute('href', url) %}
+  {% set tag_name = 'a' %}
+
+  {% if external %}
+    {% set attributes = attributes.setAttribute('target', '_blank') %}
+  {% endif %}
+{% endif %}
+
+{% if disabled %}
+  {% set attributes = attributes.setAttribute('disabled', 'disabled') %}
+{% endif %}
+
+{#
+  Template
+#}
+<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }} type="button">
+  {{ text }}
+  {% if icon is not empty %}
+    {% include "@atoms/svg/_svg--icon.twig" with {
+      icon: icon,
+      size: icon_size,
+    } only %}
+  {% endif %}
+</{{ tag_name }}>
